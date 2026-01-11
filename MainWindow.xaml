@@ -1,0 +1,213 @@
+﻿<Window x:Class="_1C11KS_MYAT_THADAR_LINN_MyCalculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_1C11KS_MYAT_THADAR_LINN_MyCalculator"
+        mc:Ignorable="d"
+        Title="MYAT THADAR LINN Calculator" 
+        Height="720" Width="400" 
+        Background="#F0F0F0" 
+        WindowStyle="None" AllowsTransparency="True"
+        KeyDown="Window_KeyDown"
+        MouseDown="Window_MouseDown">
+
+    <Window.Resources>
+
+        <Style TargetType="Button" x:Key="NeumorphismButtonStyle">
+            <Setter Property="Background" Value="#F0F0F0"/>
+            <Setter Property="Foreground" Value="#333333"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="8"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Border CornerRadius="15" Background="{TemplateBinding Background}">
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="3" Direction="135" Color="#D1D9E6" BlurRadius="6" Opacity="0.8"/>
+                                </Border.Effect>
+                            </Border>
+
+                            <Border CornerRadius="15" Background="{TemplateBinding Background}">
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="3" Direction="315" Color="White" BlurRadius="6" Opacity="0.8"/>
+                                </Border.Effect>
+                            </Border>
+
+                            <Border x:Name="MainBorder" CornerRadius="15" Background="{TemplateBinding Background}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="MainBorder" Property="Background" Value="#E0E0E0"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Button" x:Key="RedNeumorphismButtonStyle">
+            <Setter Property="Background" Value="#FF6060"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="8"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Border CornerRadius="15" Background="{TemplateBinding Background}">
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="3" Direction="135" Color="#AA4040" BlurRadius="6" Opacity="0.8"/>
+                                </Border.Effect>
+                            </Border>
+                            <Border x:Name="RedBorder" CornerRadius="15" Background="{TemplateBinding Background}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="RedBorder" Property="Background" Value="#CC4040"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Button" x:Key="GlassmorphismToggleStyle">
+            <Setter Property="Background" Value="#E0F7FA"/>
+            <Setter Property="Foreground" Value="#000000"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Border CornerRadius="20" Background="White">
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="0" Color="#00BFFF" BlurRadius="15" Opacity="0.6"/>
+                                </Border.Effect>
+                            </Border>
+                            <Border x:Name="GlassBorder" CornerRadius="20" 
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="White" BorderThickness="2">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="GlassBorder" Property="Background" Value="#B2EBF2"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Button" x:Key="GlobeButtonStyle" BasedOn="{StaticResource NeumorphismButtonStyle}">
+            <Setter Property="Content" Value="&#x1F310;"/>
+            <Setter Property="FontFamily" Value="Segoe UI Symbol, Segoe UI Emoji"/>
+            <Setter Property="FontSize" Value="24"/>
+        </Style>
+
+    </Window.Resources>
+
+    <Border Background="#F0F0F0" 
+            CornerRadius="30"
+            BorderBrush="#CCCCCC" 
+            BorderThickness="1">
+        <Border.Effect>
+            <DropShadowEffect ShadowDepth="5" Color="#B8B8B8" BlurRadius="15" Opacity="0.8"/>
+        </Border.Effect>
+
+        <Grid Margin="15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="120"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Margin="0,0,0,20">
+                <Border CornerRadius="15" Background="#E0E0E0" Margin="0">
+                    <Border.Effect>
+                        <DropShadowEffect ShadowDepth="-2" Direction="315" Color="White" BlurRadius="5" Opacity="0.7"/>
+                    </Border.Effect>
+                </Border>
+                <Border CornerRadius="15" Background="Transparent" BorderBrush="#CCCCCC" BorderThickness="1">
+                    <Border.Effect>
+                        <DropShadowEffect ShadowDepth="2" Direction="135" Color="#B8B8B8" BlurRadius="5" Opacity="0.5"/>
+                    </Border.Effect>
+                </Border>
+
+                <StackPanel Margin="15">
+                    <TextBlock x:Name="ModeTextBlock" 
+                               Text="Mode: English" 
+                               Foreground="#666666" 
+                               FontSize="14" 
+                               HorizontalAlignment="Left" 
+                               VerticalAlignment="Top"/>
+                    <TextBlock x:Name="DisplayTextBlock" 
+                               Text="0" 
+                               Foreground="#333333" 
+                               FontSize="36" 
+                               FontWeight="Light"
+                               HorizontalAlignment="Right" 
+                               VerticalAlignment="Bottom" 
+                               Margin="0,10,0,0"/>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                        
+                <Button Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" 
+                        Content="SOUND ON" Style="{StaticResource GlassmorphismToggleStyle}" 
+                        x:Name="BtnSoundToggle" Click="BtnSoundToggle_Click"/>
+
+                <Button Grid.Row="1" Grid.Column="0" Content="AC" Style="{StaticResource RedNeumorphismButtonStyle}" x:Name="BtnAC" Click="BtnAC_Click"/>
+                <Button Grid.Row="1" Grid.Column="1" Content="DEL" Style="{StaticResource NeumorphismButtonStyle}" x:Name="BtnDEL" Click="BtnDEL_Click"/>
+                <Button Grid.Row="1" Grid.Column="2" Style="{StaticResource GlobeButtonStyle}" x:Name="BtnGlobe" Click="BtnGlobe_Click"/>
+                <Button Grid.Row="1" Grid.Column="3" Content="%" Style="{StaticResource NeumorphismButtonStyle}" x:Name="BtnPercent" Click="BtnPercent_Click"/>
+
+                <Button Grid.Row="2" Grid.Column="0" Content="7" Style="{StaticResource NeumorphismButtonStyle}" x:Name="Btn7" Click="BtnNumber_Click"/>
+                <Button Grid.Row="2" Grid.Column="1" Content="8" Style="{StaticResource NeumorphismButtonStyle}" x:Name="Btn8" Click="BtnNumber_Click"/>
+                <Button Grid.Row="2" Grid.Column="2" Content="9" Style="{StaticResource NeumorphismButtonStyle}" x:Name="Btn9" Click="BtnNumber_Click"/>
+                <Button Grid.Row="2" Grid.Column="3" Content="÷" Style="{StaticResource NeumorphismButtonStyle}" x:Name="BtnDivide" Click="BtnOperation_Click"/>
+
+                <Button Grid.Row="3" Grid.Column="0" Content="4" Style="{StaticResource NeumorphismButtonStyle}" x:Name="Btn4" Click="BtnNumber_Click"/>
+                <Button Grid.Row="3" Grid.Column="1" Content="5" Style="{StaticResource NeumorphismButtonStyle}" x:Name="Btn5" Click="BtnNumber_Click"/>
+                <Button Grid.Row="3" Grid.Column="2" Content="6" Style="{StaticResource NeumorphismButtonStyle}" x:Name="Btn6" Click="BtnNumber_Click"/>
+                <Button Grid.Row="3" Grid.Column="3" Content="x" Style="{StaticResource NeumorphismButtonStyle}" x:Name="BtnMultiply" Click="BtnOperation_Click"/>
+
+                <Button Grid.Row="4" Grid.Column="0" Content="1" Style="{StaticResource NeumorphismButtonStyle}" x:Name="Btn1" Click="BtnNumber_Click"/>
+                <Button Grid.Row="4" Grid.Column="1" Content="2" Style="{StaticResource NeumorphismButtonStyle}" x:Name="Btn2" Click="BtnNumber_Click"/>
+                <Button Grid.Row="4" Grid.Column="2" Content="3" Style="{StaticResource NeumorphismButtonStyle}" x:Name="Btn3" Click="BtnNumber_Click"/>
+                <Button Grid.Row="4" Grid.Column="3" Content="-" Style="{StaticResource NeumorphismButtonStyle}" x:Name="BtnSubtract" Click="BtnOperation_Click"/>
+
+                <Button Grid.Row="5" Grid.Column="0" Content="0" Style="{StaticResource NeumorphismButtonStyle}" x:Name="Btn0" Click="BtnNumber_Click"/>
+                <Button Grid.Row="5" Grid.Column="1" Content="." Style="{StaticResource NeumorphismButtonStyle}" x:Name="BtnDecimal" Click="BtnDecimal_Click"/>
+                <Button Grid.Row="5" Grid.Column="2" Content="+" Style="{StaticResource NeumorphismButtonStyle}" x:Name="BtnAdd" Click="BtnOperation_Click"/>
+                <Button Grid.Row="5" Grid.Column="3" Content="=" Style="{StaticResource NeumorphismButtonStyle}" x:Name="BtnEqual" Click="BtnEqual_Click"/>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
