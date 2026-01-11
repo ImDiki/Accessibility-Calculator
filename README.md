@@ -1,4 +1,4 @@
-# 🌍 Multilingual Smart Calculator (多機能・多言語対応電卓)
+# Audio Accessibility Smart Calculator 
 
 ## 📖 概要 (Overview)
    クリック音の有無を切り替え可能です。(sound effect mood)
